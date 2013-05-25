@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}yaayaa - 关注成长{% endblock %}</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]><script src="/static/bootstrap/js/html5shiv.js"></script><![endif]-->
+
+    <link rel="shortcut icon" href="/static/bootstrap/ico/favicon.png">
+</head>
+
+<body style="padding-top: 60px;">
+
+<!-- 顶栏导航 -->
+<div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container">
+            {% include 'navbar.html' %}
+        </div>
+    </div>
+</div>
+
+<!-- 内容主题 -->
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Footer  -->
+<footer class="footer">
+    {% include 'footer.html' %}
+</footer>
+
+<!-- javascript -->
+<script src="/static/jquery/jquery-1.9.1.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/jquery/plugins/jsonview/jquery.jsonview.js"></script>
+<script src="/static/jquery/plugins/nano/jquery.nano.js"></script>
+<script src="/static/temp/temp.js"></script>
+
+</body>
+</html>

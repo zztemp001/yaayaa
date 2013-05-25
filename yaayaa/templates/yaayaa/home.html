@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="hero-unit">
+        <p class="title"><img src="/static/temp/logo-gray.png" width="600" height="122" alt="Fuel UX">
+            Version 2.3.0</p>
+
+        <p>Fuel UX extends Twitter Bootstrap with additional lightweight JavaScript controls.
+            Other benefits include easy installation into web projects, integrated scripts for customizing Bootstrap and
+            Fuel UX, simple updates, and solid optimization for deployment.
+            All functionality is covered by live documentation and unit tests.</p>
+
+        <p><a class="btn btn-large" href="https://github.com/ExactTarget/fuelux">View On GitHub &raquo;</a></p>
+    </div>
+
+    <div class="alert">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <div class="page-header">
+        <h1>Fuel UX Controls
+            <small>Clean and lightweight UI controls for modern web projects</small>
+        </h1>
+    </div>
+
+    <div>
+        <div id="jsonview">
+
+        </div>
+        <button id="btn-ajax" type="button" class="btn btn-inverse">Ajax it</button>
+    </div>
+
+    <div class="row">
+        <div class="span4">
+            <h3><a href="#checkbox">Checkbox</a></h3>
+
+            <p>Customized look and feel for checkbox element.</p>
+        </div>
+        <div class="span4">
+            <h3><a href="#combobox">Combobox</a></h3>
+
+            <p>Combines input and dropdown for easy and flexible data selection.</p>
+        </div>
+        <div class="span4">
+            <h3><a href="#datagrid">Datagrid</a></h3>
+
+            <p>Renders data in a table with paging, sorting, and searching.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span4">
+            <h3><a href="#pillbox">Pillbox</a></h3>
+
+            <p>Easily manage selected items with color-coded text labels.</p>
+        </div>
+        <div class="span4">
+            <h3><a href="#radio">Radio</a></h3>
+
+            <p>Customized look and feel for radio button element.</p>
+        </div>
+        <div class="span4">
+            <h3><a href="#search">Search</a></h3>
+
+            <p>Combines input and button for integrated search interaction.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <h3><a href="#select">Select</a></h3>
+
+            <p>Extends button dropdown with additional functionality for setting and retrieving the selected item.</p>
+        </div>
+        <div class="span4">
+            <h3><a href="#spinner">Spinner</a></h3>
+
+            <p>Provides convenient numeric input with increment and decrement buttons.</p>
+        </div>
+        <div class="span4">
+            <h3><a href="#tree">Tree</a></h3>
+
+            <p>Provides a visual display of hierarchical node data.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <h3><a href="#wizard">Wizard</a></h3>
+
+            <p>Easily define a multi-step process that needs to be completed in a specific order.</p>
+        </div>
+    </div>
+
+{% endblock %}
