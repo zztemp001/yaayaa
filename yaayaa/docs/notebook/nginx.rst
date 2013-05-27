@@ -1,6 +1,19 @@
 nginx
 *****
 
+目录权限的解决
+============
+
+解决办法：http://stackoverflow.com/questions/6795350/nginx-403-forbidden-for-all-files
+
+.. code-block:: shell
+
+    # 查看是否有权限
+    $ namei -ox /root
+
+    # 如果没有，则需要添加
+    $ chmod o+x /root
+
 启动、停止、重启 nginx 进程
 ========================
 
