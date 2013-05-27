@@ -1,6 +1,7 @@
 #coding=utf-8
 
 import os.path
+import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -9,6 +10,9 @@ ROOT_URLCONF = 'yaayaa.urls'
 
 SETTINGS_DIR = os.path.dirname(__file__)    # 设置文件所在路径
 PROJECT_DIR = os.path.abspath('.')     # 项目根目录所在路径
+
+# 将通用的模块和开发工具所使用的模块加入到项目路径中
+sys.path.append(os.path.join(SETTINGS_DIR, 'packages').replace('\\', '/'))
 
 # 设置用户上传内容的目录和 url
 MEDIA_ROOT = os.path.join(SETTINGS_DIR, 'public/media/').replace('\\', '/')

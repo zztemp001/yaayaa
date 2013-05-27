@@ -37,6 +37,8 @@
 #. 系统软件手动进行安装，软件列表清单放在 ``yaayaa/docs/requirements.rst`` 中记录
 #. 所有 django app 统一放置在 ``yaayaa/packages`` 目录下，包括开发工具和 **zzpy**
 #. 将 pip 的 ``requirements.txt`` 放置在项目设置目录下
+#. 将 nginx 的进程号统一存放在 ``yaayaa/nginx.pid`` 下
+#.
 
 
 
