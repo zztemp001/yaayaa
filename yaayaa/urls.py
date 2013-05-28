@@ -24,13 +24,13 @@ urlpatterns = patterns('',
     #  'userena.views.signup',
     #  {'signup_form': SignupFormExtra}),
 
-    (r'^account/', include('userena.urls')),
-    (r'^messages/', include('userena.contrib.umessages.urls')),
+    url(r'^account/', include('userena.urls')),
+    url(r'^messages/', include('userena.contrib.umessages.urls')),
     url(r'^account/promo/$', 'account.views.promo', name='promo'),
-    (r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 
     # 启用 django-ajax 框架
-    (r'^ajax/', include('ajax.urls')),
+    url(r'^ajax/', include('ajax.urls')),
 )
 
 # Add media and static files

@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
+{% load static from staticfiles %}
+
 {% block content %}
 
     <div class="hero-unit">
-        <p class="title"><img src="/static/temp/logo-gray.png" width="600" height="122" alt="Fuel UX">
+        <p class="title"><img src="{% static "temp/logo-gray.png" %}" width="600" height="122" alt="Fuel UX">
             Version 2.3.0</p>
 
         <p>Fuel UX extends Twitter Bootstrap with additional lightweight JavaScript controls.

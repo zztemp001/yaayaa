@@ -11,7 +11,7 @@
 #. 开发时服务器自动 reload，部署时需手动重启 ``gunicorn`` 或使用 ``fabric`` 实现自动重启
 #. 在开发机器中设定环境变量 ``developing = True`` ，然后在 ``settings`` 文件中检测此变量，如果检测不到，则意味着是正式运营的机器，
   设置 ``DEBUG = True`` ，同时导入正式运营的 ``settings`` 文件内容。
-#. 开发时，修改 ``hosts`` 文件，使 ``www.beetaa.com`` ``static.beetaa.com`` ``media.beetaa.com`` 指向 **127.0.0.1**
+#. 开发时，修改 ``hosts`` 文件，使 ``www.local.com`` ``static.local.com`` ``media.local.com`` ``docs.local.com`` 指向 **127.0.0.1**
   部署时，修改域名记录，使 ``www.beetaa.com`` ``static.beetaa.com`` ``media.beetaa.com`` 指向服务器 IP
 #. 开发时，memcached 的 IP 使用 **127.0.0.1**，部署时，使用与开发时同样的设置即可。后期需要扩展的，则在新机器上运行缓存服务
 
@@ -19,12 +19,95 @@
 开发环境与部署环境的一致性安排
 =========================
 
+项目目录结构安排
+--------------
+
+.. code-block::
+
+    yaayaa
+        |---- yaayaa
+                |---- setttings.py          # 在 settings 中检测系统变量 DEVELOPING 是否为 1
+                |---- deploy_settings.py
+                |---- develop_settings.py
+                |---- urls.py
+                |---- views.py
+                |---- wsgi.py
+                |---- yaayaa.db
+                |---- nginx_deploy.conf     # 部署时，将此文件拷贝至 /etc/nginx/nginx.conf
+                |---- nginx_develop.conf    # 开发时，将此文件拷贝至 c:\program files\nginx\conf\nginx.conf
+                |---- requirements.txt
+                |---- facfile.py
+                |---- templates
+                |---- templatetags
+                |---- public
+                        |---- static        # settings.STATIC_ROOT
+                        |---- media         # settings.MEDIA_ROOT
+                |---- static                # 添加至 settings.STATICFILES_DIRS
+                        |---- yaayaa
+                                |---- js
+                                |---- css
+                                |---- img
+                                |---- icon
+                                        |----fav.ico
+                                |---- font
+                        |---- jquery
+                                |---- jquery.1.9.1.js
+                                |---- plugins
+                        |---- bootstrap
+                                |---- js
+                                |---- css
+                                |---- img
+                                |---- plugins
+                                |---- themes
+                |---- logs
+                        |---- yaayaa.log
+                |---- docs
+                        |---- axure
+                        |---- notes
+                                |---- init.rst
+                |---- packages
+                        |---- zzpy
+        |---- blog
+                |---- models.py
+                |---- views.py
+                |---- urls.py
+                |---- tests.py
+                |---- endpoints.py
+                |---- admin.py
+                |---- static
+                        |---- blog
+                                |---- js
+                                |---- css
+                                |---- img
+                |---- templates
+                        |---- blog
+                |---- migrations
+        |---- account
+        |---- ....
+
+设置、检测开发标识变量
+-------------------
+
+#. 在开发机器中设置一个键/值为 ``DEVELOPING = 1`` 的环境变量
+#. 在 settings.py 中检测该环境变量，如果值为 1，则包含 develop_settings.py，否则包含 deploy_settings.py ::
+
+    import os
+
+    if os.environ.get("DEVELOPING"):
+        from develop_settings import *
+    else:
+        from deploy_settings import *
+
+
+
+
+
 #. 项目目录结构保持一致。
 #. 通过 ``os.path...`` 来获得项目根目录和设置文件目录
 #. 静态文件将归集在 ``yaayaa/public/static`` 目录，设此为 ``settings.STATIC_ROOT`` 的值，``manage.py collectstatic`` 将静态文件拷贝至此
 #. 将 ``settings.STATIC_URL`` 设置为 ``/static/`` ，该服务器使用 nginx 运行，并指向以上 ``static`` 目录
-#. 网站基本和通用的文件放在 ``yaayaa/static`` 下，下设 ``base`` ``font`` ``icon`` ``site`` ``boot`` 和 ``fav.ico``
-#. ``yaayaa/static/boot`` 下设 ``plugins`` ``themes`` 目录
+#. 网站基本和通用的文件放在 ``yaayaa/static/yaayaa`` 下，下设 ``base`` ``font`` ``icon`` ``site`` ``boot`` 和 ``fav.ico``
+#. ``yaayaa/static/yaayaa/boot`` 下设 ``plugins`` ``themes`` 目录
 #. 用户上传的文件将存放在 ``yaayaa/public/media`` 目录，设此为 ``settings.MEDIA_ROOT`` 的值，用户上传的文件存放于此
 #. 将 ``settings.MEDIA_URL`` 设置为 ``/media/`` ，该服务器使用 nginx 运行，并指向以上 ``static`` 目录
 #. 将 nginx 和 fabric 的配置文件放置于项目设置目录下

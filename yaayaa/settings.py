@@ -1,10 +1,11 @@
 #coding=utf-8
 
-import os.path
+import os
 import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
 WSGI_APPLICATION = 'yaayaa.wsgi.application'
 ROOT_URLCONF = 'yaayaa.urls'
 
@@ -172,14 +173,11 @@ USE_TZ = True
 ADMINS = (('admin', 'admin@yaayaa.com'),)
 MANAGERS = ADMINS
 SITE_ID = 1
-ALLOWED_HOSTS = []  # 当 DEBUG=False 时，要设置
 SECRET_KEY = 'g@$6#q-w@jc-skrf2%=g-g85$b+3yy6z-7f27b-8wh@#bvwvkd'
 
 # 配置邮件发送
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_USE_TLS = False
-# EMAIL_HOST = 'smtp.126.com'
-# EMAIL_PORT = 25
-# EMAIL_HOST_USER = 'zztemp001'
-# EMAIL_HOST_PASSWORD = 'z88888888'
+
+# 如非开发机器，则引入正式设置覆盖当前开发设置
+#if not os.environ.get("DEVELOPING"):
+#    from deploy_settings import *
