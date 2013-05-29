@@ -17,7 +17,6 @@
     # 安装 nginx + memcached + pylibmc
     $ sudo apt-get install nginx
     $ sudo apt-get install memcached
-    $ sudo apt-get install python-pylibmc
 
     # 安装 pillow 包所依赖的库文件
     $ sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms1-dev libwebp-dev
@@ -35,6 +34,9 @@ virtualenv 基本模块安装
 
     # 安装 django 1.5.1
     $ pip install django=1.5.1
+
+    # 安装 python-memcached
+    $ pip install python-memcached
 
     # 安装 gunicorn
     $ pip install gunicorn

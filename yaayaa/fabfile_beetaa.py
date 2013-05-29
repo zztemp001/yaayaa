@@ -15,13 +15,13 @@ def update_project():
 def restart_server():
     # 重启 gunicorn
     try:
-        run('killall -9 gunicorn_django')
+        sudo('killall -9 gunicorn_django')
     except:
         pass
 
     with cd('/root/prj/yaayaa'):
         with prefix('source /root/env/mytest/bin/activate'):
-            run('gunicorn_django -D ./yaayaa/settings_beetaa.py')
+            sudo('gunicorn_django --daemon ./yaayaa/settings_beetaa.py')
 
     # 重启 nginx
     with cd('/root/prj/yaayaa'):

@@ -1,6 +1,23 @@
 nginx
 *****
 
+media/static 目录的正确配置
+=========================
+
+.. code-block::
+
+    server {
+        listen 80;
+
+        location /media/ {
+            root /root/prj/yaayaa/yaayaa/public;    #此处的路径设根路径，须在该目录下新建 media 目录
+        }
+
+        location /static/ {
+            root /root/prj/yaayaa/yaayaa/public;    #此处的路径设根路径，须在该目录下新建 static 目录
+        }
+    }
+
 目录权限的解决
 ============
 
