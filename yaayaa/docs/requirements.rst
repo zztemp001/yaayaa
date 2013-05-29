@@ -9,6 +9,7 @@
     # 安装编译环境
     $ sudo apt-get install build-essential
     $ sudo apt-get install python-dev
+    $ sudo apt-get install libevent     # memcached 所需
 
     # 安装 git
     $ sudo apt-get install git

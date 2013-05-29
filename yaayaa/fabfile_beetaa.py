@@ -21,7 +21,7 @@ def restart_server():
 
     with cd('/root/prj/yaayaa'):
         with prefix('source /root/env/mytest/bin/activate'):
-            run('gunicorn_django ./yaayaa/settings_beetaa.py')
+            run('gunicorn_django -D ./yaayaa/settings_beetaa.py')
 
     # 重启 nginx
     with cd('/root/prj/yaayaa'):

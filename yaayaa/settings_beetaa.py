@@ -5,8 +5,8 @@ from settings import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-MEDIA_URL = 'http://media.beetaa.com/'
-STATIC_URL = 'http://static.beetaa.com/'
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
 
 # 当 DEBUG=False 时，要设置，内容为系统允许的服务器列表
 ALLOWED_HOSTS = ['.beetaa.com', '121.199.35.227', '127.0.0.1']
