@@ -177,7 +177,3 @@ SECRET_KEY = 'g@$6#q-w@jc-skrf2%=g-g85$b+3yy6z-7f27b-8wh@#bvwvkd'
 
 # 配置邮件发送
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# 如非开发机器，则引入正式设置覆盖当前开发设置
-#if not os.environ.get("DEVELOPING"):
-#    from deploy_settings import *
