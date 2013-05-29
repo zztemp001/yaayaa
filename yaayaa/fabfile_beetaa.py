@@ -2,14 +2,14 @@
 
 from fabric.api import *
 
-env.hosts = ['www.yaayaa.com']
-env.user = 'weiming'
+env.hosts = ['www.beetaa.com']
+env.user = 'root'
 
 def update_project():
     # 更新服务器代码并收集静态文件
-    with cd('~/sites/yaayaa'):
+    with cd('/root/prj/yaayaa'):
         run('git pull origin master')
-        with prefix('source ~/envs/yaayaa.com/bin/activate'):
+        with prefix('source /root/env/mytest/bin/activate'):
             run('python manage.py collectstatic --noinput')
 
 def restart_server():
@@ -19,12 +19,13 @@ def restart_server():
     except:
         pass
 
-    with cd('~/sites/yaayaa'):
-        with prefix('source ~/envs/yaayaa.com/bin/activate'):
-            run('gunicorn_django -D ./yaayaa/settings_yaayaa.py')
+    with cd('/root/prj/yaayaa'):
+        with prefix('source /root/env/mytest/bin/activate'):
+            run('gunicorn_django ./yaayaa/settings_beetaa.py')
 
     # 重启 nginx
-    sudo('cp ./yaayaa/nginx_yaayaa.conf /etc/nginx/nginx.conf')
+    with cd('/root/prj/yaayaa'):
+        sudo('cp ./yaayaa/nginx_beetaa.conf /etc/nginx/nginx.conf')
     sudo('nginx -s reload')
 
 def deploy():

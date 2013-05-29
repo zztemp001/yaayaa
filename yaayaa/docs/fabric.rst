@@ -69,5 +69,11 @@ fabric
         update_project()
         restart_server()
 
+#. 在开发机器中将最新代码 push 至 github ::
 
+    $ git push origin master
+
+#. 在开发机器中运行 fab ::
+
+    $ fab -f ./yaayaa/fabfile_yaayaa.py deploy
 

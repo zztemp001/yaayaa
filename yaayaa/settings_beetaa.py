@@ -9,7 +9,7 @@ MEDIA_URL = 'http://media.beetaa.com/'
 STATIC_URL = 'http://static.beetaa.com/'
 
 # 当 DEBUG=False 时，要设置，内容为系统允许的服务器列表
-ALLOWED_HOSTS = ['.beetaa.com', '127.0.0.1']
+ALLOWED_HOSTS = ['.beetaa.com', '121.199.35.227', '127.0.0.1']
 
 # 设置中间件列表和加载顺序
 MIDDLEWARE_CLASSES = (

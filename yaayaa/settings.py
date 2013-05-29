@@ -94,6 +94,16 @@ INSTALLED_APPS = (
     'blog',
 )
 
+# 配置缓存
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': [
+            '127.0.0.1:11211',
+            ]
+    }
+}
+
 # 配置 django-userena
 LOGIN_REDIRECT_URL = '/account/%(username)s/'
 USERENA_SIGNIN_REDIRECT_URL = LOGIN_REDIRECT_URL
